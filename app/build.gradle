@@ -3,6 +3,14 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
+    signingConfigs {
+        signingConfig {
+            keyAlias 'seven'
+            keyPassword '123456'
+            storeFile file('jinkens.jks')
+            storePassword '123456'
+        }
+    }
     defaultConfig {
         applicationId "www.seven.com.jenkinstest"
         minSdkVersion 15
@@ -13,6 +21,7 @@ android {
     }
     buildTypes {
         release {
+            signingConfig signingConfigs.signingConfig
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
